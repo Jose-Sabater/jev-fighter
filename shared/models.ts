@@ -40,7 +40,7 @@ export const MODELS: ModelInfo[] = [
 export const OFFICIAL_ROSTER: string[] = [...MODELS.filter((m) => m.kind !== 'baseline').map((m) => m.id), 'baseline/maximin', 'baseline/greedy', 'baseline/random'];
 
 export const DEFAULT_LEFT = 'typesafe/jev-1.13.0';
-export const DEFAULT_RIGHT = 'opper/kev-4b';
+export const DEFAULT_RIGHT = 'sference/clef';
 
 export function modelInfo(id: string): ModelInfo {
   return MODELS.find((m) => m.id === id) ?? { id, kind: 'chat', label: id.split('/').pop() ?? id };

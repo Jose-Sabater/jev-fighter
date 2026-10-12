@@ -197,10 +197,10 @@ they are perfectly smooth whatever your machine, usually faster than real time, 
 
 ```bash
 # Four matches, each pairing played from both sides
-npm run bench -- --left typesafe/jev-1.13.0 --right opper/kev-4b --matches 4
+npm run bench -- --left typesafe/jev-1.13.0 --right sference/clef --matches 4
 
 # Every pair of these models, two matches each, four at a time
-npm run leaderboard -- --models typesafe/jev-1.13.0,opper/kev-4b,gemini/gemini-3.5-flash-lite --matches 2 --parallel 4
+npm run leaderboard -- --models typesafe/jev-1.13.0,sference/clef,gemini/gemini-3.5-flash-lite --matches 2 --parallel 4
 
 # One warm-up and three decisions per model, to check keys and latency
 npm run smoke -- typesafe/jev-1.13.0 openai/gpt-5.4-mini

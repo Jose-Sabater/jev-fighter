@@ -5,7 +5,7 @@ import { buildQuestion } from '../shared/question.ts';
 
 const apiKey = process.env.OPPER_API_KEY;
 if (!apiKey) throw new Error('Set OPPER_API_KEY');
-const models = process.argv.slice(2).length ? process.argv.slice(2) : ['typesafe/jev-1.13.0', 'opper/kev-4b', 'gemini/gemini-3.5-flash-lite'];
+const models = process.argv.slice(2).length ? process.argv.slice(2) : ['typesafe/jev-1.13.0', 'sference/clef', 'gemini/gemini-3.5-flash-lite'];
 
 const s = newGame(3);
 while (s.round.phase !== 'fight') step(s);

@@ -88,7 +88,7 @@ function schedule(): Job[] {
       ? values.models.split(',').map((s) => s.trim())
       : values.official
         ? OFFICIAL_ROSTER
-        : ['typesafe/jev-1.13.0', 'opper/kev-4b', 'baseline/random', 'baseline/greedy'];
+        : ['typesafe/jev-1.13.0', 'sference/clef', 'baseline/random', 'baseline/greedy'];
     for (let a = 0; a < models.length; a++) for (let b = a + 1; b < models.length; b++) pairs.push([models[a], models[b]]);
   } else {
     pairs.push([values.left!, values.right!]);
