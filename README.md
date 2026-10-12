@@ -244,7 +244,7 @@ npm run replays -- delete <id> <id>                       # here
 ADMIN_TOKEN=... npm run replays -- delete <id> --remote https://your-site
 ```
 
-On the site, admins (see `ADMIN_EMAILS` below, and anyone on `localhost`) get a **Delete** button on
+On the site, admins (see `ADMIN_EMAILS` below, and anyone browsing from the machine the server runs on) get a **Delete** button on
 every replay.
 
 Any Opper chat model id works on the command line (it plays through the JSON-schema adapter), and
@@ -430,6 +430,7 @@ Variables (all optional):
 | `SESSION_SECRET` | keeps people signed in across restarts: `openssl rand -hex 32` |
 | `ADMIN_TOKEN` | lets scripts upload official matches and delete replays: `openssl rand -hex 32` |
 | `ADMIN_EMAILS` | comma-separated: people signed in with these Opper emails can delete replays on the site |
+| `PROXY_SECRET` | behind a proxy: only requests with this in an `X-Proxy-Secret` header are served (others are sent to the `OPPER_REDIRECT_URI` site), so the backend's own address cannot skip the proxy |
 | `JEV_FIGHTER_MAX_COMMUNITY` | community replays kept (default 20000) |
 | `JEV_FIGHTER_DATA_DIR` | where replays go (the image sets `/data`) |
 

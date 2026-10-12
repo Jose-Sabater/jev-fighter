@@ -69,9 +69,9 @@ describe('the replay store', () => {
 });
 
 /** Calls the app as the HTTP server would. */
-async function call(app: ReturnType<typeof createApp>, method: string, path: string, opts: { body?: Uint8Array; headers?: Record<string, string> } = {}) {
+async function call(app: ReturnType<typeof createApp>, method: string, path: string, opts: { body?: Uint8Array; headers?: Record<string, string>; from?: string } = {}) {
   const req = Readable.from(opts.body ? [Buffer.from(opts.body)] : []) as unknown as IncomingMessage;
-  Object.assign(req, { method, url: path, headers: { host: 'jev-fighter.example', 'x-forwarded-proto': 'https', ...opts.headers }, socket: { remoteAddress: '203.0.113.9' } });
+  Object.assign(req, { method, url: path, headers: { host: 'jev-fighter.example', 'x-forwarded-proto': 'https', ...opts.headers }, socket: { remoteAddress: opts.from ?? '203.0.113.9' } });
   let status = 0;
   let text = '';
   const res = {
@@ -121,6 +121,14 @@ describe('the replay API', () => {
     expect(out.status).toBe(200);
     const evil = await call(app, 'POST', '/auth/logout', { body: new TextEncoder().encode('{}'), headers: { ...behindProxy, origin: 'https://evil.example' } });
     expect(evil.status).toBe(403);
+  });
+
+  it('decides "local" by the connection, not by a Host header anyone can send', async () => {
+    const s = await store.saveReplay(replay);
+    const forged = await call(app, 'DELETE', `/api/replays/${s.id}`, { headers: { host: 'localhost', 'x-forwarded-proto': '' } });
+    expect(forged.status).toBe(403);
+    const local = await call(app, 'DELETE', `/api/replays/${s.id}`, { from: '127.0.0.1', headers: { host: 'localhost', 'x-forwarded-proto': '' } });
+    expect(local.status).toBe(200);
   });
 
   it('filters the replay list by source', async () => {

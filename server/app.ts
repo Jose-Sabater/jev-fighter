@@ -100,9 +100,11 @@ async function replayBody(req: Req): Promise<Replay> {
 }
 
 /** The dev key is only used on plain-http localhost, so a deployment never pays for visitors with it. */
+/** A request from this machine, judged by the connection itself: headers can be forged, the socket cannot. */
 function isLocal(req: Req): boolean {
-  const host = (req.headers.host ?? '').split(':')[0];
-  return (host === 'localhost' || host === '127.0.0.1') && !req.headers['x-forwarded-proto'];
+  const addr = req.socket?.remoteAddress ?? '';
+  const loopback = addr === '127.0.0.1' || addr === '::1' || addr === '::ffff:127.0.0.1';
+  return loopback && !req.headers['x-forwarded-for'] && !req.headers['x-forwarded-proto'];
 }
 
 /** Behind a proxy the Host header is the backend's, so the public host (from the redirect URI) counts too. */
