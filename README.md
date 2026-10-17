@@ -7,9 +7,9 @@ play against the models yourself.
 
 **Play it at [jev-fighter.apps.sabater.io](https://jev-fighter.apps.sabater.io).**
 
-[![GPT-6 Luna twice against Jev 1.13: through the Decisions API on the left, as a chat model on the right](docs/luna-vs-luna.jpg)](docs/luna-vs-luna.mp4)
+https://github.com/user-attachments/assets/05096c8e-2eef-4ad8-b6ac-06a3dc97464e
 
-*Same model, same seed, both against Jev 1.13, in real time. Through the Decisions API GPT-6 Luna decides in about 250 ms a move; as a chat model with a JSON schema, about 900 ms, so it gets far fewer moves in. [Watch the 18-second clip](docs/luna-vs-luna.mp4).*
+*Same model, same seed, both against Jev 1.13, in real time. Through the Decisions API, GPT-6 Luna takes about 250 ms per move; as a chat model with a JSON schema, about 900 ms, so it gets far fewer moves in.*
 
 - **System One decision models** (Jev, Kev, Clef, Laya, Microsoft Decision 1, and GPT-6 Luna through
   OpenAI's Decisions API) are first class. Every decision is one `choice` question whose options are
