@@ -472,3 +472,7 @@ docs/           design spec and plan
 A replay is the seed plus the decision log (the tick each move was applied) and a state hash every 10
 seconds. Playing the log back reproduces the match frame for frame, and the viewer reports it if a hash
 does not match. Any change to moves or rules bumps `ENGINE_VERSION`.
+
+---
+
+Jev Fighter is also on Opper, as a decision benchmark: [opper.ai/decision-benchmarks/fighter](https://opper.ai/decision-benchmarks/fighter/).
