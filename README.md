@@ -5,7 +5,7 @@ built as a benchmark: a deterministic engine, exact replays, a log of every deci
 Elo leaderboard. You can watch matches live, scrub through replays, export clips with sound, and
 play against the models yourself.
 
-**Play it at [jev-fighter.apps.sabater.io](https://jev-fighter.apps.sabater.io).**
+**Play it at [jev-fighter.apps.sabater.io](https://jev-fighter.apps.sabater.io), or with a free pool at [opper.ai/decision-benchmarks/fighter](https://opper.ai/decision-benchmarks/fighter/).**
 
 https://github.com/user-attachments/assets/05096c8e-2eef-4ad8-b6ac-06a3dc97464e
 
@@ -472,7 +472,3 @@ docs/           design spec and plan
 A replay is the seed plus the decision log (the tick each move was applied) and a state hash every 10
 seconds. Playing the log back reproduces the match frame for frame, and the viewer reports it if a hash
 does not match. Any change to moves or rules bumps `ENGINE_VERSION`.
-
----
-
-Jev Fighter is also on Opper, as a decision benchmark: [opper.ai/decision-benchmarks/fighter](https://opper.ai/decision-benchmarks/fighter/).
